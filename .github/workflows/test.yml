@@ -1,1 +1,22 @@
 
+name: bootcamp 2020 calss 1 practice1 9-12-2022
+
+on:
+  push:
+    branches: [main]
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: installing node module
+        uses: actions/setup-node@v2-beta
+        with:
+          node version: 16
+      - name: installing surge
+        run: npm install --global surge
+      - name: deploying surge
+        run: surge ./ drunk-bells.surge.sh --token $ {{secrets.surge_toekn}}
